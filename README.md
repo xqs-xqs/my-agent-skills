@@ -9,7 +9,7 @@
 > 分享一些在日常学习、工作、阅读中真正好用的 skill。
 
 
-**🌐 Language**: **简体中文** | [English](./README.en.md)
+**🌐 Language**: **简体中文** | [English](./README.EN.md)
 
 </div>
   
