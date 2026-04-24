@@ -75,10 +75,11 @@ my-agent-skills/
 ---
 
 ## 📚 Skill List
-
 | Skill | Function | Lang | Use Case | Status |
 |-------|----------|------|----------|--------|
-| [`doc-summary-zh`](./doc-summary-zh/) | Structured deep summary for technical & course documents | 🇨🇳 Chinese | Slides, technical docs, lectures | ✅ v1.0 |
+| [`doc-summary-zh`](./doc-summary-zh/) | Structured deep summary for technical & course documents | 🇨🇳  | Slides, technical docs, lectures | ✅ v1.0 |
+| [`algo-speed-run`](./algo-speed-run/) | One-shot algo breakdown: physical intuition + geek code + visualizer + cross-examination | 🇨🇳  | Speed-run LeetCode, interview blitz, gap-filling | ✅ v1.0 |
+| [`algo-deconstruct-engine`](./algo-deconstruct-engine/) | Deep algo deconstruction: blind-push gating + physical models + cold-start recall test | 🇨🇳  | Deep mastery, long-term retention, building algo intuition | ✅ v1.0 |
 
 *More skills coming soon...*
 
