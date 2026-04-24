@@ -6,7 +6,7 @@
 
 > 一个个人维护的 Claude Skills 收藏仓库
 >
-> 分享一些在日常学习、工作、阅读中真正好用的 skill。
+> 分享一些自制的在日常学习、工作、阅读中真正好用的 skill。
 
 
 **🌐 Language**: **简体中文** | [English](./README_EN.md)
