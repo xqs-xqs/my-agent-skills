@@ -75,10 +75,11 @@ my-agent-skills/
 ---
 
 ## 📚 Skill 列表
-
 | Skill | 功能 | 语言 | 适用场景 | 状态 |
 |-------|------|------|----------|------|
-| [`doc-summary-zh`](./doc-summary-zh/) | 技术/课程文档结构化深度总结 | 🇨🇳 中文 | 课件、技术文档、学术讲义 | ✅ v1.0 |
+| [`doc-summary-zh`](./doc-summary-zh/) | 技术/课程文档结构化深度总结 | 🇨🇳  | 课件、技术文档、学术讲义 | ✅ v1.0 |
+| [`algo-speed-run`](./algo-speed-run/) | 算法题单轮完整解构：物理模型+极客代码+可视化+灵魂拷问 | 🇨🇳  | 速刷力扣、面试突击、查漏补缺 | ✅ v1.0 |
+| [`algo-deconstruct-engine`](./algo-deconstruct-engine/) | 算法题深度解构：盲推阻断+物理直觉+冷启动测试卷 | 🇨🇳  | 深度掌握、长期留存、建立算法直觉 | ✅ v1.0 |
 
 *更多 skill 正在路上……*
 
