@@ -17,17 +17,22 @@
 
 ## 📖 Table of Contents
 
-- [What is a Skill](#-what-is-a-skill)
-- [Repository Structure](#-repository-structure)
-- [Skill List](#-skill-list)
-- [Prompt or Skill?](#-prompt-or-skill)
-- [Prompt Templates](#-prompt-templates)
-- [Installation](#-installation)
-- [Usage Tips](#-usage-tips)
-- [Contributing](#-contributing)
-- [Build Your Own](#-build-your-own-skill)
-- [FAQ](#-faq)
-- [License](#-license)
+- [🧰 my-agent-skills](#-my-agent-skills)
+  - [📖 Table of Contents](#-table-of-contents)
+  - [🤔 What is a Skill](#-what-is-a-skill)
+  - [📁 Repository Structure](#-repository-structure)
+  - [📚 Skill List](#-skill-list)
+  - [🆚 Prompt or Skill?](#-prompt-or-skill)
+  - [📋 Prompt Templates](#-prompt-templates)
+  - [🚀 Installation](#-installation)
+    - [Option 1: Download a Single Skill](#option-1-download-a-single-skill)
+    - [Option 2: Clone the Entire Repo](#option-2-clone-the-entire-repo)
+  - [💡 Usage Tips](#-usage-tips)
+  - [🤝 Contributing](#-contributing)
+  - [🛠️ Build Your Own Skill](#️-build-your-own-skill)
+  - [📌 FAQ](#-faq)
+  - [📜 License](#-license)
+  - [🌟 Star History](#-star-history)
 
 ---
 
@@ -109,6 +114,7 @@ Not every handy prompt is worth packaging as a skill. The two solve different pr
 **The one-line test:**
 
 > "I want Claude to **recognize the scenario automatically**" → make it a **Skill**
+> 
 > "I **know when to use it** and want to feed it manually" → keep it a **Prompt**
 
 For things like knowledge capture or periodic review — where you already know when to use them and want to tweak params each time — a prompt template is actually smoother than a skill.
