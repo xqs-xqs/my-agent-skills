@@ -20,6 +20,8 @@
 - [What is a Skill](#-what-is-a-skill)
 - [Repository Structure](#-repository-structure)
 - [Skill List](#-skill-list)
+- [Prompt or Skill?](#-prompt-or-skill)
+- [Prompt Templates](#-prompt-templates)
 - [Installation](#-installation)
 - [Usage Tips](#-usage-tips)
 - [Contributing](#-contributing)
@@ -61,6 +63,11 @@ my-agent-skills/
 ├── [skill-2]/                    # Future skills
 │   └── ...
 │
+├── prompts/                      # Prompt templates (paste manually, no install)
+│   ├── extract.md                # Single-conversation knowledge capture
+│   ├── weekly-review.md          # Cross-doc thinking-pattern insights
+│   └── question-review.md        # Question-asking training
+│
 └── docs/                         # General documentation
     ├── how-to-install.md         # Installation guide
     └── how-to-create.md          # Skill authoring guide
@@ -71,6 +78,7 @@ my-agent-skills/
 - Each skill lives in its own folder; folder name matches the skill's `name` field
 - Each skill ships with both `SKILL.md` (readable/editable) and `.skill` (one-click install)
 - Each skill has its own README describing specific usage
+- Each prompt is a standalone `.md` file with its usage included inside
 
 ---
 
@@ -81,7 +89,41 @@ my-agent-skills/
 | [`algo-speed-run`](./algo-speed-run/) | One-shot algo breakdown: physical intuition + geek code + visualizer + cross-examination | 🇨🇳  | Speed-run LeetCode, interview blitz, gap-filling | ✅ v1.0 |
 | [`algo-deconstruct-engine`](./algo-deconstruct-engine/) | Deep algo deconstruction: blind-push gating + physical models + cold-start recall test | 🇨🇳  | Deep mastery, long-term retention, building algo intuition | ✅ v1.0 |
 
-*More skills coming soon...*
+*More skills still brewing, coming soon...*
+
+---
+
+## 🆚 Prompt or Skill?
+
+Not every handy prompt is worth packaging as a skill. The two solve different problems:
+
+| Dimension | Skill | Prompt Template |
+|-----------|-------|-----------------|
+| Triggering | Claude **auto-detects the scenario** from the description | You **paste it manually** into the chat |
+| Reuse | Install once, hits repeatedly over time | Copy when needed, one-off |
+| Control | Claude decides whether to use it | You fully decide when and how |
+| Install | Must package as `.skill` and upload | Zero install, copy & go |
+| Tweaking on the fly | Awkward (requires repackaging) | Just edit the placeholders, flexible |
+| Best for | Fixed workflows that recur across similar scenarios | Occasional use, on-the-fly params, or prompts still being refined |
+
+**The one-line test:**
+
+> "I want Claude to **recognize the scenario automatically**" → make it a **Skill**
+> "I **know when to use it** and want to feed it manually" → keep it a **Prompt**
+
+For things like knowledge capture or periodic review — where you already know when to use them and want to tweak params each time — a prompt template is actually smoother than a skill.
+
+---
+
+## 📋 Prompt Templates
+
+Paste manually, no install required. Click a command to see the full template and usage.
+
+| Command | Purpose | Input | Output |
+|---------|---------|-------|--------|
+| [`/extract`](./prompts/extract.md) | Knowledge capture + meta-cognitive feedback on your questions | The current conversation | A note-ready capture doc |
+| [`/weekly-review`](./prompts/weekly-review.md) | Cross-doc thinking-pattern insights | This week's N conversation-question docs | Question habits / blind spots / training tips |
+| [`/question-review`](./prompts/question-review.md) | Question-asking training (focused on raw questions only) | Your raw questions across N conversations on a topic | The single deadliest blind spot + rewrite drills |
 
 ---
 
@@ -152,6 +194,10 @@ A: Yes. Claude decides based on keywords and scenarios in the skill's descriptio
 **Q: Can multiple skills conflict?**
 
 A: No. Skills cover different scenarios; for overlapping contexts, Claude picks the best match.
+
+**Q: Why are some things skills and others just prompts?**
+
+A: It comes down to whether you want Claude to *auto-trigger*. Fixed, recurring workflows become skills; occasional prompts that need on-the-fly tweaks stay as paste-in prompts. See [Prompt or Skill?](#-prompt-or-skill).
 
 **Q: Does this cost anything?**
 
