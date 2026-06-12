@@ -71,7 +71,9 @@ my-agent-skills/
 ├── prompts/                      # Prompt templates (paste manually, no install)
 │   ├── extract.md                # Single-conversation knowledge capture
 │   ├── weekly-review.md          # Cross-doc thinking-pattern insights
-│   └── question-review.md        # Question-asking training
+│   ├── question-review.md        # Question-asking training
+│   ├── handoff-export.md         # Cross-conversation handoff · stage 1 (transcribe)
+│   └── handoff-resume.md         # Cross-conversation handoff · stage 2 (resume)
 │
 └── docs/                         # General documentation
     ├── how-to-install.md         # Installation guide
@@ -130,6 +132,8 @@ Paste manually, no install required. Click a command to see the full template an
 | [`/extract`](./prompts/extract.md) | Knowledge capture + meta-cognitive feedback on your questions | The current conversation | A note-ready capture doc |
 | [`/weekly-review`](./prompts/weekly-review.md) | Cross-doc thinking-pattern insights | This week's N conversation-question docs | Question habits / blind spots / training tips |
 | [`/question-review`](./prompts/question-review.md) | Question-asking training (focused on raw questions only) | Your raw questions across N conversations on a topic | The single deadliest blind spot + rewrite drills |
+| [`/handoff-export`](./prompts/handoff-export.md) | Cross-conversation handoff · transcribe (lock in conclusions + open questions) | The current long conversation | A paste-ready handoff record |
+| [`/handoff-resume`](./prompts/handoff-resume.md) | Cross-conversation handoff · resume (calibrate + ask 3 key questions) | The handoff record from the previous step | Recap confirmation + 3 key questions back |
 
 ---
 

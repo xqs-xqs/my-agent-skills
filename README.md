@@ -71,7 +71,9 @@ my-agent-skills/
 ├── prompts/                      # Prompt 模板（手动粘贴使用，无需安装）
 │   ├── extract.md                # 单次对话知识沉淀
 │   ├── weekly-review.md          # 跨文档思维模式洞察
-│   └── question-review.md        # 提问能力训练
+│   ├── question-review.md        # 提问能力训练
+│   ├── handoff-export.md         # 跨对话交接·阶段一（转录）
+│   └── handoff-resume.md         # 跨对话交接·阶段二（接续）
 │
 └── docs/                         # 通用文档
     ├── how-to-install.md         # 安装教程
@@ -129,6 +131,8 @@ my-agent-skills/
 | [`/extract`](./prompts/extract.md) | 对话知识沉淀 + 提问元认知点评 | 当前这次对话 | 一份可直接入笔记的沉淀文档 |
 | [`/weekly-review`](./prompts/weekly-review.md) | 跨文档思维模式洞察 | 本周 N 篇 对话的提问文档 | 提问惯性 / 盲点 / 训练建议 |
 | [`/question-review`](./prompts/question-review.md) | 提问能力训练（只盯提问原文） | 某主题下多次对话的提问原文 | 最致命盲点 + 改写练习 |
+| [`/handoff-export`](./prompts/handoff-export.md) | 跨对话交接·转录（结论固化 + 待办清单） | 当前长对话 | 可粘贴的交接记录 |
+| [`/handoff-resume`](./prompts/handoff-resume.md) | 跨对话交接·接续（复述校准 + 反问 3 问） | 上一步的交接记录 | 复述确认 + 3 个关键反问 |
 
 ---
 
