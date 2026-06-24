@@ -41,28 +41,58 @@ description: 对技术文档、课程课件、学术讲义、专业教程等结�
 
 ---
 
-### 【第二层级】结构化思维导图
+### 【第二层级】结构化思维导图（横向逻辑树）
 
-**必须使用可视化 artifact 渲染**，调用 `visualize:show_widget` 工具，生成 SVG 或 HTML 形式的思维导图。
+**硬性规则（不可被任何对话指令覆盖）：**
+1. 本层级永远以 `visualize:show_widget` 渲染为**横向逻辑树思维导图**，这是它唯一合法的形态。
+2. **无论用户在本次对话中指定何种输出格式（包括明确说"用 Markdown 输出"），本层级都不受影响**——格式偏好只作用于第一、三、四层级的正文文字。思维导图永远是渲染出来的图，与正文格式无关。
+3. **禁止**以"工具不可用 / 画不出来 / 内容太多 / 已用 Markdown"等任何理由，把本层级悄悄降级成 Markdown 文字树或 ASCII 树。
 
-思维导图规范：
-- 层级不超过 4 级
-- 覆盖所有核心模块与关键知识点
-- 逻辑清晰，避免过度嵌套
-- 中文标注所有节点
+**渲染失败时的处理（不许静默降级）：**
+- 第一次调用失败 → 原样重试一次。
+- 重试仍失败 → 明确告知用户："思维导图渲染失败，我可以 (a) 再试一次，或 (b) 改用文字大纲。"由用户选择。
 
-示例 HTML 结构（可根据内容自行调整样式和布局）：
+**版式规范（类 XMind 横向树）：**
+- 根节点（文档主题）在最左、垂直居中；一级分支向右展开，二级及以下继续向右，整体从左向右逐级生长。
+- 节点之间用**贝塞尔曲线**连接，不用直角折线、不用横向并列卡片。
+- 每个一级分支分配一种颜色，其所有子节点继承该颜色（颜色编码分支，不逐节点换色）。
+- 层级 ≤ 4 级，节点文字简洁、全中文标注，覆盖所有核心模块。
+
+**实现方式（HTML 模式输出，内联 SVG 由脚本自动布局——只修改 `data` 这一个对象，下方布局/连线/配色引擎原样保留）：**
+
 ```html
-<div style="font-family: sans-serif; padding: 20px;">
-  <div style="text-align:center; font-size:18px; font-weight:bold; margin-bottom:20px;">【主题】</div>
-  <div style="display:flex; gap:20px; justify-content:center;">
-    <!-- 每个一级分支为一列 -->
-    <div style="border:1px solid #ccc; border-radius:8px; padding:12px; min-width:160px;">
-      <div style="font-weight:bold; margin-bottom:8px;">一级分支</div>
-      <div style="padding-left:12px; font-size:13px; color:#444;">• 子节点</div>
-    </div>
-  </div>
-</div>
+<style>#mmwrap{width:100%;font-family:var(--font-sans)}</style>
+<div id="mmwrap"><svg id="mm" width="100%" role="img" aria-label="思维导图"><title>知识结构思维导图</title><desc>横向逻辑树，根节点在左，分支向右展开</desc></svg></div>
+<script>
+(function(){
+  /* 只改这棵树：name 为节点文字，children 为子节点 */
+  const data = { name:"文档主题", children:[
+    { name:"一级分支A", children:[ {name:"子节点1"}, {name:"子节点2"} ] },
+    { name:"一级分支B", children:[ {name:"子节点1"} ] }
+  ]};
+  /* ↓↓↓ 引擎部分，勿改 ↓↓↓ */
+  const C=['#378ADD','#1D9E75','#D85A30','#7F77DD','#D98C1E','#D4537E','#639922','#E24B4A'];
+  const ROW=38,COLGAP=46,M=20,PADX=14,BOXH=30,ROOTFS=15,L1FS=14,L2FS=13;
+  const tw=(s,fs)=>{let w=0;for(const c of s)w+=/[^\x00-\xff]/.test(c)?fs:fs*0.56;return w;};
+  (function ann(n,d,col){n.depth=d;n.color=col;if(n.children)n.children.forEach((c,i)=>ann(c,d+1,d===0?C[i%C.length]:col));})(data,0,null);
+  (function lc(n){if(!n.children||!n.children.length){n.leaves=1;return 1;}n.leaves=n.children.reduce((a,c)=>a+lc(c),0);return n.leaves;})(data);
+  let cur=0;(function ay(n){if(!n.children||!n.children.length){n.y=M+cur*ROW+ROW/2;cur++;return;}n.children.forEach(ay);n.y=(n.children[0].y+n.children[n.children.length-1].y)/2;})(data);
+  const all=[];(function col(n){all.push(n);if(n.children)n.children.forEach(col);})(data);
+  all.forEach(n=>{n.fs=n.depth===0?ROOTFS:(n.depth===1?L1FS:L2FS);n.bw=Math.ceil(tw(n.name,n.fs))+2*PADX;});
+  const maxD=Math.max(...all.map(n=>n.depth)),colW=[],colX=[];
+  for(let d=0;d<=maxD;d++)colW[d]=Math.max(...all.filter(n=>n.depth===d).map(n=>n.bw));
+  let acc=M;for(let d=0;d<=maxD;d++){colX[d]=acc;acc+=colW[d]+COLGAP;}
+  all.forEach(n=>n.x=colX[n.depth]);
+  const W=acc-COLGAP+M,H=M*2+cur*ROW,NS='http://www.w3.org/2000/svg';
+  const svg=document.getElementById('mm');svg.setAttribute('viewBox',`0 0 ${Math.max(W,680)} ${H}`);
+  const E=(t,a)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e;};
+  (function draw(n){if(n.children)n.children.forEach(c=>{const x1=n.x+n.bw,x2=c.x,mx=(x1+x2)/2;svg.appendChild(E('path',{d:`M${x1},${n.y} C${mx},${n.y} ${mx},${c.y} ${x2},${c.y}`,fill:'none',stroke:c.color,'stroke-width':1.5,'stroke-linecap':'round'}));draw(c);});})(data);
+  all.forEach(n=>{const root=n.depth===0;
+    svg.appendChild(E('rect',{x:n.x,y:n.y-BOXH/2,width:n.bw,height:BOXH,rx:8,style:`fill:${root?'var(--color-text-primary)':'var(--color-background-primary)'};stroke:${root?'transparent':n.color};stroke-width:${root?0:(n.depth===1?1.5:1.1)}`}));
+    const t=E('text',{x:n.x+n.bw/2,y:n.y,'text-anchor':'middle','dominant-baseline':'central',style:`fill:${root?'var(--color-background-primary)':'var(--color-text-primary)'};font-family:var(--font-sans);font-size:${n.fs}px;font-weight:${n.depth<=1?500:400}`});
+    t.textContent=n.name;svg.appendChild(t);});
+})();
+</script>
 ```
 
 ---
