@@ -67,6 +67,7 @@ my-agent-skills/
 │
 ├── cook-from-zero/               # Skill 2: 从零学做菜（原理驱动 + 防拖延分层）
 │   ├── SKILL.md                  # 核心指令文件
+│   ├── cook-from-zero.skill      # 打包安装文件
 │   ├── EVAL.md                   # 测试方法与评分卡
 │   └── README.md                 # 该 skill 的详细说明
 │
