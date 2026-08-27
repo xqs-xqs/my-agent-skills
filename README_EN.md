@@ -2,6 +2,7 @@
 
 <div align="center">
 
+
 # 🧰 my-agent-skills
 
 > A personal collection of Claude Skills
@@ -41,11 +42,13 @@
 A Skill is a **pluggable capability package** for Claude. At its core, it's a structured Markdown instruction file (SKILL.md) that tells Claude how to think, what steps to follow, and what format to output when encountering specific types of tasks.
 
 Think of it as:
+
 - 📝 A domain-specific SOP (Standard Operating Procedure)
 - 🧠 A specialist's "working manual"
 - 🔌 An "app plugin" for Claude — once installed, it auto-triggers in relevant scenarios
 
 **Key advantages:**
+
 - **Auto-triggering**: No need to copy prompts each time; Claude decides when to invoke based on the description
 - **Write once, reuse forever**: Define your workflow once, execute consistently every time
 - **Shareable & iterable**: Package as `.skill` files for easy distribution
@@ -90,11 +93,13 @@ my-agent-skills/
 ---
 
 ## 📚 Skill List
-| Skill | Function | Lang | Use Case | Status |
-|-------|----------|------|----------|--------|
-| [`doc-summary-zh`](./doc-summary-zh/) | Structured deep summary for technical & course documents | 🇨🇳  | Slides, technical docs, lectures | ✅ v1.1 |
-| [`algo-speed-run`](./algo-speed-run/) | One-shot algo breakdown: physical intuition + geek code + visualizer + cross-examination | 🇨🇳  | Speed-run LeetCode, interview blitz, gap-filling | ✅ v1.0 |
-| [`algo-deconstruct-engine`](./algo-deconstruct-engine/) | Deep algo deconstruction: blind-push gating + physical models + cold-start recall test | 🇨🇳  | Deep mastery, long-term retention, building algo intuition | ✅ v1.0 |
+
+| Skill                                                   | Function                                                     | Use Case                                                     | Status |
+| ------------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------ |
+| [`doc-summary-zh`](./doc-summary-zh/)                   | Structured deep summary for technical & course documents     | Slides, technical docs, lectures                             | ✅ v1.1 |
+| [`algo-speed-run`](./algo-speed-run/)                   | One-shot algo breakdown: physical intuition + geek code + visualizer + cross-examination | Speed-run LeetCode, interview blitz, gap-filling             | ✅ v1.0 |
+| [`algo-deconstruct-engine`](./algo-deconstruct-engine/) | Deep algo deconstruction: blind-push gating + physical models + cold-start recall test | Deep mastery, long-term retention, building algo intuition   | ✅ v1.0 |
+| [`cook-from-zero`](./cook-from-zero/)                   | Learn a dish or technique from scratch: transferable principles + anti-procrastination layering | Home-cooking beginners who want the why, not just the recipe | 🚧 v0.1 |
 
 *More skills still brewing, coming soon...*
 
@@ -104,19 +109,19 @@ my-agent-skills/
 
 Not every handy prompt is worth packaging as a skill. The two solve different problems:
 
-| Dimension | Skill | Prompt Template |
-|-----------|-------|-----------------|
-| Triggering | Claude **auto-detects the scenario** from the description | You **paste it manually** into the chat |
-| Reuse | Install once, hits repeatedly over time | Copy when needed, one-off |
-| Control | Claude decides whether to use it | You fully decide when and how |
-| Install | Must package as `.skill` and upload | Zero install, copy & go |
-| Tweaking on the fly | Awkward (requires repackaging) | Just edit the placeholders, flexible |
-| Best for | Fixed workflows that recur across similar scenarios | Occasional use, on-the-fly params, or prompts still being refined |
+| Dimension           | Skill                                                     | Prompt Template                                              |
+| ------------------- | --------------------------------------------------------- | ------------------------------------------------------------ |
+| Triggering          | Claude **auto-detects the scenario** from the description | You **paste it manually** into the chat                      |
+| Reuse               | Install once, hits repeatedly over time                   | Copy when needed, one-off                                    |
+| Control             | Claude decides whether to use it                          | You fully decide when and how                                |
+| Install             | Must package as `.skill` and upload                       | Zero install, copy & go                                      |
+| Tweaking on the fly | Awkward (requires repackaging)                            | Just edit the placeholders, flexible                         |
+| Best for            | Fixed workflows that recur across similar scenarios       | Occasional use, on-the-fly params, or prompts still being refined |
 
 **The one-line test:**
 
 > "I want Claude to **recognize the scenario automatically**" → make it a **Skill**
-> 
+>
 > "I **know when to use it** and want to feed it manually" → keep it a **Prompt**
 
 For things like knowledge capture or periodic review — where you already know when to use them and want to tweak params each time — a prompt template is actually smoother than a skill.
@@ -127,13 +132,13 @@ For things like knowledge capture or periodic review — where you already know 
 
 Paste manually, no install required. Click a command to see the full template and usage.
 
-| Command | Purpose | Input | Output |
-|---------|---------|-------|--------|
-| [`/extract`](./prompts/extract.md) | Knowledge capture + meta-cognitive feedback on your questions | The current conversation | A note-ready capture doc |
-| [`/weekly-review`](./prompts/weekly-review.md) | Cross-doc thinking-pattern insights | This week's N conversation-question docs | Question habits / blind spots / training tips |
-| [`/question-review`](./prompts/question-review.md) | Question-asking training (focused on raw questions only) | Your raw questions across N conversations on a topic | The single deadliest blind spot + rewrite drills |
-| [`/handoff-export`](./prompts/handoff-export.md) | Cross-conversation handoff · transcribe (lock in conclusions + open questions) | The current long conversation | A paste-ready handoff record |
-| [`/handoff-resume`](./prompts/handoff-resume.md) | Cross-conversation handoff · resume (calibrate + ask 3 key questions) | The handoff record from the previous step | Recap confirmation + 3 key questions back |
+| Command                                            | Purpose                                                      | Input                                                | Output                                           |
+| -------------------------------------------------- | ------------------------------------------------------------ | ---------------------------------------------------- | ------------------------------------------------ |
+| [`/extract`](./prompts/extract.md)                 | Knowledge capture + meta-cognitive feedback on your questions | The current conversation                             | A note-ready capture doc                         |
+| [`/weekly-review`](./prompts/weekly-review.md)     | Cross-doc thinking-pattern insights                          | This week's N conversation-question docs             | Question habits / blind spots / training tips    |
+| [`/question-review`](./prompts/question-review.md) | Question-asking training (focused on raw questions only)     | Your raw questions across N conversations on a topic | The single deadliest blind spot + rewrite drills |
+| [`/handoff-export`](./prompts/handoff-export.md)   | Cross-conversation handoff · transcribe (lock in conclusions + open questions) | The current long conversation                        | A paste-ready handoff record                     |
+| [`/handoff-resume`](./prompts/handoff-resume.md)   | Cross-conversation handoff · resume (calibrate + ask 3 key questions) | The handoff record from the previous step            | Recap confirmation + 3 key questions back        |
 
 ---
 
@@ -160,12 +165,12 @@ Then upload individual skills following Option 1.
 
 ## 💡 Usage Tips
 
-| Scenario | Recommendation |
-|----------|----------------|
-| First-time use | Read the skill's README first |
+| Scenario            | Recommendation                                               |
+| ------------------- | ------------------------------------------------------------ |
+| First-time use      | Read the skill's README first                                |
 | Unexpected behavior | Open an [issue](https://github.com/xqs-xqs/my-agent-skills/issues) |
-| Want to customize | Fork → edit SKILL.md → repackage |
-| Cross-device usage | Sign in to the same Claude account |
+| Want to customize   | Fork → edit SKILL.md → repackage                             |
+| Cross-device usage  | Sign in to the same Claude account                           |
 
 ---
 
@@ -228,6 +233,7 @@ If these skills help you, a Star would mean a lot ⭐
 ---
 
 <div align="center">
+
 
 **Maintained by [@xqs-xqs](https://github.com/xqs-xqs)** · Made with Claude 🤖
 

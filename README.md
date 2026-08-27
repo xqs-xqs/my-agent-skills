@@ -57,7 +57,7 @@ Skill 是 Claude 的**可插拔能力包**。它本质上是一份结构化的 M
 ```
 my-agent-skills/
 ├── README.md                     # 中文主页（本文件）
-├── README.en.md                  # 英文版
+├── README_EN.md                  # 英文版
 ├── LICENSE                       # 开源协议
 │
 ├── doc-summary-zh/               # Skill 1: 中文文档结构化总结
@@ -65,7 +65,12 @@ my-agent-skills/
 │   ├── doc-summary-zh.skill      # 打包安装文件
 │   └── README.md                 # 该 skill 的详细说明
 │
-├── [skill-2]/                    # 后续添加的 skill
+├── cook-from-zero/               # Skill 2: 从零学做菜（原理驱动 + 防拖延分层）
+│   ├── SKILL.md                  # 核心指令文件
+│   ├── EVAL.md                   # 测试方法与评分卡
+│   └── README.md                 # 该 skill 的详细说明
+│
+├── [skill]/                    # 后续添加的 skill
 │   └── ...
 │
 ├── prompts/                      # Prompt 模板（手动粘贴使用，无需安装）
@@ -86,14 +91,17 @@ my-agent-skills/
 - 每个 skill 同时提供 `SKILL.md`（可读可编辑）和 `.skill`（一键安装）
 - 各 skill 有自己的 README，说明独特用法
 - 每个 prompt 也是独立一个文件夹，具体用法一并包含在 `.md` 文件中
+
 ---
 
 ## 📚 Skill 列表
-| Skill | 功能 | 语言 | 适用场景 | 状态 |
-|-------|------|------|----------|------|
-| [`doc-summary-zh`](./doc-summary-zh/) | 技术/课程文档结构化深度总结 | 🇨🇳  | 课件、技术文档、学术讲义 | ✅ v1.1 |
-| [`algo-speed-run`](./algo-speed-run/) | 算法题单轮完整解构：物理模型+极客代码+可视化+灵魂拷问 | 🇨🇳  | 速刷力扣、面试突击、查漏补缺 | ✅ v1.0 |
-| [`algo-deconstruct-engine`](./algo-deconstruct-engine/) | 算法题深度解构：盲推阻断+物理直觉+冷启动测试卷 | 🇨🇳  | 深度掌握、长期留存、建立算法直觉 | ✅ v1.0 |
+
+| Skill                                                   | 功能                                                  | 适用场景                         | 状态   |
+| ------------------------------------------------------- | ----------------------------------------------------- | -------------------------------- | ------ |
+| [`doc-summary-zh`](./doc-summary-zh/)                   | 技术/课程文档结构化深度总结                           | 课件、技术文档、学术讲义         | ✅ v1.1 |
+| [`algo-speed-run`](./algo-speed-run/)                   | 算法题单轮完整解构：物理模型+极客代码+可视化+灵魂拷问 | 速刷力扣、面试突击、查漏补缺     | ✅ v1.0 |
+| [`algo-deconstruct-engine`](./algo-deconstruct-engine/) | 算法题深度解构：盲推阻断+物理直觉+冷启动测试卷        | 深度掌握、长期留存、建立算法直觉 | ✅ v1.0 |
+| [`cook-from-zero`](./cook-from-zero/)                   | 从零学一道菜/一种烹饪手法：通用原理+可迁移+防拖延分层 | 新手下厨、想搞懂原理而非照抄菜谱 | 🚧 v0.1 |
 
 *更多沉淀中的 skill 正在路上……*
 
