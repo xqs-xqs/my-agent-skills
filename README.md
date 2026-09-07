@@ -71,6 +71,11 @@ my-agent-skills/
 │   ├── EVAL.md                   # 测试方法与评分卡
 │   └── README.md                 # 该 skill 的详细说明
 │
+├── debug-socratic/               # Skill 3: 苏格拉底式调试（先提问，不直接给答案）
+│   ├── SKILL.md                  # 核心指令文件
+│   ├── debug-socratic.skill      # 打包安装文件
+│   └── README.md                 # 该 skill 的详细说明
+│
 ├── [skill]/                    # 后续添加的 skill
 │   └── ...
 │
@@ -103,6 +108,9 @@ my-agent-skills/
 | [`algo-speed-run`](./algo-speed-run/)                   | 算法题单轮完整解构：物理模型+极客代码+可视化+灵魂拷问 | 速刷力扣、面试突击、查漏补缺     | ✅ v1.0 |
 | [`algo-deconstruct-engine`](./algo-deconstruct-engine/) | 算法题深度解构：盲推阻断+物理直觉+冷启动测试卷        | 深度掌握、长期留存、建立算法直觉 | ✅ v1.0 |
 | [`cook-from-zero`](./cook-from-zero/)                   | 从零学一道菜/一种烹饪手法：通用原理+可迁移+防拖延分层 | 新手下厨、想搞懂原理而非照抄菜谱 | 🚧 v0.1 |
+| [`debug-socratic`](./debug-socratic/)                   | 苏格拉底式调试：先反问 3-5 个具体问题，逼你自己定位 bug | 刷题/写项目debug、想练定位能力     | 🧪 v0.1 |
+
+> 状态说明：✅ 已稳定使用 ｜ 🚧 打磨中 ｜ 🧪 测试版，尚未在真实场景验证
 
 *更多沉淀中的 skill 正在路上……*
 
