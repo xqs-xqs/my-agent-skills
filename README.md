@@ -22,8 +22,8 @@
   - [🤔 什么是 Skill](#-什么是-skill)
   - [📁 仓库结构](#-仓库结构)
   - [📚 Skill 列表](#-skill-列表)
-  - [🆚 Prompt 还是 Skill？](#-prompt-还是-skill)
   - [📋 Prompt 模板](#-prompt-模板)
+  - [🆚 Prompt 还是 Skill？](#-prompt-还是-skill)
   - [🚀 安装使用](#-安装使用)
     - [方式一：下载单个 skill](#方式一下载单个-skill)
     - [方式二：克隆整个仓库](#方式二克隆整个仓库)
@@ -84,7 +84,8 @@ my-agent-skills/
 │   ├── weekly-review.md          # 跨文档思维模式洞察
 │   ├── question-review.md        # 提问能力训练
 │   ├── handoff-export.md         # 跨对话交接·阶段一（转录）
-│   └── handoff-resume.md         # 跨对话交接·阶段二（接续）
+│   ├── handoff-resume.md         # 跨对话交接·阶段二（接续）
+│   └── debug-quiz.md             # 贴代码先被反问，自己定位 bug
 │
 └── docs/                         # 通用文档
     ├── how-to-install.md         # 安装教程
@@ -116,6 +117,21 @@ my-agent-skills/
 
 ---
 
+## 📋 Prompt 模板
+
+手动粘贴使用，无需安装。点击命令名查看完整模板与用法。
+
+| 命令 | 用途 | 输入 | 输出 |
+|------|------|------|------|
+| [`/extract`](./prompts/extract.md) | 对话知识沉淀 + 提问元认知点评 | 当前这次对话 | 一份可直接入笔记的沉淀文档 |
+| [`/weekly-review`](./prompts/weekly-review.md) | 跨文档思维模式洞察 | 本周 N 篇 对话的提问文档 | 提问惯性 / 盲点 / 训练建议 |
+| [`/question-review`](./prompts/question-review.md) | 提问能力训练（只盯提问原文） | 某主题下多次对话的提问原文 | 最致命盲点 + 改写练习 |
+| [`/handoff-export`](./prompts/handoff-export.md) | 跨对话交接·转录（结论固化 + 待办清单） | 当前长对话 | 可粘贴的交接记录 |
+| [`/handoff-resume`](./prompts/handoff-resume.md) | 跨对话交接·接续（复述校准 + 反问 3 问） | 上一步的交接记录 | 复述确认 + 3 个关键反问 |
+| [`/debug-quiz`](./prompts/debug-quiz.md) | 别直接给答案，先反问（[skill 版](./debug-socratic/)） | 你的代码 + "哪里错了" | 3-5 个引导性问题，你答完再确认补充 |
+
+---
+
 ## 🆚 Prompt 还是 Skill？
 
 不是所有好用的提示词都值得封装成 skill。两者解决的是不同的问题：
@@ -136,20 +152,6 @@ my-agent-skills/
 > 「我**自己知道何时该用**，想手动喂给它」 → 留作 **Prompt**
 
 像「知识沉淀」「周期复盘」这类——你心里清楚什么时候该用、每次还想微调参数——做成 prompt 模板反而比 skill 更顺手。
-
----
-
-## 📋 Prompt 模板
-
-手动粘贴使用，无需安装。点击命令名查看完整模板与用法。
-
-| 命令 | 用途 | 输入 | 输出 |
-|------|------|------|------|
-| [`/extract`](./prompts/extract.md) | 对话知识沉淀 + 提问元认知点评 | 当前这次对话 | 一份可直接入笔记的沉淀文档 |
-| [`/weekly-review`](./prompts/weekly-review.md) | 跨文档思维模式洞察 | 本周 N 篇 对话的提问文档 | 提问惯性 / 盲点 / 训练建议 |
-| [`/question-review`](./prompts/question-review.md) | 提问能力训练（只盯提问原文） | 某主题下多次对话的提问原文 | 最致命盲点 + 改写练习 |
-| [`/handoff-export`](./prompts/handoff-export.md) | 跨对话交接·转录（结论固化 + 待办清单） | 当前长对话 | 可粘贴的交接记录 |
-| [`/handoff-resume`](./prompts/handoff-resume.md) | 跨对话交接·接续（复述校准 + 反问 3 问） | 上一步的交接记录 | 复述确认 + 3 个关键反问 |
 
 ---
 
