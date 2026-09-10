@@ -22,8 +22,8 @@
   - [🤔 什么是 Skill](#-什么是-skill)
   - [📁 仓库结构](#-仓库结构)
   - [📚 Skill 列表](#-skill-列表)
-  - [🆚 Prompt 还是 Skill？](#-prompt-还是-skill)
   - [📋 Prompt 模板](#-prompt-模板)
+  - [🆚 Prompt 还是 Skill？](#-prompt-还是-skill)
   - [🚀 安装使用](#-安装使用)
     - [方式一：下载单个 skill](#方式一下载单个-skill)
     - [方式二：克隆整个仓库](#方式二克隆整个仓库)
@@ -32,7 +32,6 @@
   - [🛠️ 开发自己的 Skill](#️-开发自己的-skill)
   - [📌 常见问题](#-常见问题)
   - [📜 协议](#-协议)
-  - [🌟 Star History](#-star-history)
 
 ---
 
@@ -71,6 +70,11 @@ my-agent-skills/
 │   ├── EVAL.md                   # 测试方法与评分卡
 │   └── README.md                 # 该 skill 的详细说明
 │
+├── debug-socratic/               # Skill 3: 苏格拉底式调试（先提问，不直接给答案）
+│   ├── SKILL.md                  # 核心指令文件
+│   ├── debug-socratic.skill      # 打包安装文件
+│   └── README.md                 # 该 skill 的详细说明
+│
 ├── [skill]/                    # 后续添加的 skill
 │   └── ...
 │
@@ -79,7 +83,8 @@ my-agent-skills/
 │   ├── weekly-review.md          # 跨文档思维模式洞察
 │   ├── question-review.md        # 提问能力训练
 │   ├── handoff-export.md         # 跨对话交接·阶段一（转录）
-│   └── handoff-resume.md         # 跨对话交接·阶段二（接续）
+│   ├── handoff-resume.md         # 跨对话交接·阶段二（接续）
+│   └── debug-quiz.md             # 贴代码先被反问，自己定位 bug
 │
 └── docs/                         # 通用文档
     ├── how-to-install.md         # 安装教程
@@ -103,8 +108,26 @@ my-agent-skills/
 | [`algo-speed-run`](./algo-speed-run/)                   | 算法题单轮完整解构：物理模型+极客代码+可视化+灵魂拷问 | 速刷力扣、面试突击、查漏补缺     | ✅ v1.0 |
 | [`algo-deconstruct-engine`](./algo-deconstruct-engine/) | 算法题深度解构：盲推阻断+物理直觉+冷启动测试卷        | 深度掌握、长期留存、建立算法直觉 | ✅ v1.0 |
 | [`cook-from-zero`](./cook-from-zero/)                   | 从零学一道菜/一种烹饪手法：通用原理+可迁移+防拖延分层 | 新手下厨、想搞懂原理而非照抄菜谱 | 🚧 v0.1 |
+| [`debug-socratic`](./debug-socratic/)                   | 苏格拉底式调试：先反问 3-5 个具体问题，逼你自己定位 bug | 刷题/写项目debug、想练定位能力     | 🧪 v0.1 |
+
+> 状态说明：✅ 已稳定使用 ｜ 🚧 打磨中 ｜ 🧪 测试版，尚未在真实场景验证
 
 *更多沉淀中的 skill 正在路上……*
+
+---
+
+## 📋 Prompt 模板
+
+手动粘贴使用，无需安装。点击命令名查看完整模板与用法。
+
+| 命令 | 用途 | 输入 | 输出 |
+|------|------|------|------|
+| [`/extract`](./prompts/extract.md) | 对话知识沉淀 + 提问元认知点评 | 当前这次对话 | 一份可直接入笔记的沉淀文档 |
+| [`/weekly-review`](./prompts/weekly-review.md) | 跨文档思维模式洞察 | 本周 N 篇 对话的提问文档 | 提问惯性 / 盲点 / 训练建议 |
+| [`/question-review`](./prompts/question-review.md) | 提问能力训练（只盯提问原文） | 某主题下多次对话的提问原文 | 最致命盲点 + 改写练习 |
+| [`/handoff-export`](./prompts/handoff-export.md) | 跨对话交接·转录（结论固化 + 待办清单） | 当前长对话 | 可粘贴的交接记录 |
+| [`/handoff-resume`](./prompts/handoff-resume.md) | 跨对话交接·接续（复述校准 + 反问 3 问） | 上一步的交接记录 | 复述确认 + 3 个关键反问 |
+| [`/debug-quiz`](./prompts/debug-quiz.md) | 别直接给答案，先反问（[skill 版](./debug-socratic/)） | 你的代码 + "哪里错了" | 3-5 个引导性问题，你答完再确认补充 |
 
 ---
 
@@ -128,20 +151,6 @@ my-agent-skills/
 > 「我**自己知道何时该用**，想手动喂给它」 → 留作 **Prompt**
 
 像「知识沉淀」「周期复盘」这类——你心里清楚什么时候该用、每次还想微调参数——做成 prompt 模板反而比 skill 更顺手。
-
----
-
-## 📋 Prompt 模板
-
-手动粘贴使用，无需安装。点击命令名查看完整模板与用法。
-
-| 命令 | 用途 | 输入 | 输出 |
-|------|------|------|------|
-| [`/extract`](./prompts/extract.md) | 对话知识沉淀 + 提问元认知点评 | 当前这次对话 | 一份可直接入笔记的沉淀文档 |
-| [`/weekly-review`](./prompts/weekly-review.md) | 跨文档思维模式洞察 | 本周 N 篇 对话的提问文档 | 提问惯性 / 盲点 / 训练建议 |
-| [`/question-review`](./prompts/question-review.md) | 提问能力训练（只盯提问原文） | 某主题下多次对话的提问原文 | 最致命盲点 + 改写练习 |
-| [`/handoff-export`](./prompts/handoff-export.md) | 跨对话交接·转录（结论固化 + 待办清单） | 当前长对话 | 可粘贴的交接记录 |
-| [`/handoff-resume`](./prompts/handoff-resume.md) | 跨对话交接·接续（复述校准 + 反问 3 问） | 上一步的交接记录 | 复述确认 + 3 个关键反问 |
 
 ---
 
@@ -226,12 +235,6 @@ A: 本仓库完全免费。使用 skill 本身不产生额外费用，只占用�
 ## 📜 协议
 
 自由使用、修改、分享，请保留署名。
-
----
-
-## 🌟 Star History
-
-如果这些 skill 对你有帮助，欢迎点个 Star ⭐
 
 ---
 

@@ -23,8 +23,8 @@
   - [🤔 What is a Skill](#-what-is-a-skill)
   - [📁 Repository Structure](#-repository-structure)
   - [📚 Skill List](#-skill-list)
-  - [🆚 Prompt or Skill?](#-prompt-or-skill)
   - [📋 Prompt Templates](#-prompt-templates)
+  - [🆚 Prompt or Skill?](#-prompt-or-skill)
   - [🚀 Installation](#-installation)
     - [Option 1: Download a Single Skill](#option-1-download-a-single-skill)
     - [Option 2: Clone the Entire Repo](#option-2-clone-the-entire-repo)
@@ -33,7 +33,6 @@
   - [🛠️ Build Your Own Skill](#️-build-your-own-skill)
   - [📌 FAQ](#-faq)
   - [📜 License](#-license)
-  - [🌟 Star History](#-star-history)
 
 ---
 
@@ -76,7 +75,8 @@ my-agent-skills/
 │   ├── weekly-review.md          # Cross-doc thinking-pattern insights
 │   ├── question-review.md        # Question-asking training
 │   ├── handoff-export.md         # Cross-conversation handoff · stage 1 (transcribe)
-│   └── handoff-resume.md         # Cross-conversation handoff · stage 2 (resume)
+│   ├── handoff-resume.md         # Cross-conversation handoff · stage 2 (resume)
+│   └── debug-quiz.md             # Get questioned back, locate the bug yourself
 │
 └── docs/                         # General documentation
     ├── how-to-install.md         # Installation guide
@@ -100,8 +100,26 @@ my-agent-skills/
 | [`algo-speed-run`](./algo-speed-run/)                   | One-shot algo breakdown: physical intuition + geek code + visualizer + cross-examination | Speed-run LeetCode, interview blitz, gap-filling             | ✅ v1.0 |
 | [`algo-deconstruct-engine`](./algo-deconstruct-engine/) | Deep algo deconstruction: blind-push gating + physical models + cold-start recall test | Deep mastery, long-term retention, building algo intuition   | ✅ v1.0 |
 | [`cook-from-zero`](./cook-from-zero/)                   | Learn a dish or technique from scratch: transferable principles + anti-procrastination layering | Home-cooking beginners who want the why, not just the recipe | 🚧 v0.1 |
+| [`debug-socratic`](./debug-socratic/)                   | Socratic debugging: 3-5 code-specific questions first, so you locate the bug yourself | Debugging practice problems or your own project              | 🧪 v0.1 |
+
+> Status legend: ✅ stable ｜ 🚧 being refined ｜ 🧪 test build, not yet validated in real use
 
 *More skills still brewing, coming soon...*
+
+---
+
+## 📋 Prompt Templates
+
+Paste manually, no install required. Click a command to see the full template and usage.
+
+| Command                                            | Purpose                                                      | Input                                                | Output                                           |
+| -------------------------------------------------- | ------------------------------------------------------------ | ---------------------------------------------------- | ------------------------------------------------ |
+| [`/extract`](./prompts/extract.md)                 | Knowledge capture + meta-cognitive feedback on your questions | The current conversation                             | A note-ready capture doc                         |
+| [`/weekly-review`](./prompts/weekly-review.md)     | Cross-doc thinking-pattern insights                          | This week's N conversation-question docs             | Question habits / blind spots / training tips    |
+| [`/question-review`](./prompts/question-review.md) | Question-asking training (focused on raw questions only)     | Your raw questions across N conversations on a topic | The single deadliest blind spot + rewrite drills |
+| [`/handoff-export`](./prompts/handoff-export.md)   | Cross-conversation handoff · transcribe (lock in conclusions + open questions) | The current long conversation                        | A paste-ready handoff record                     |
+| [`/handoff-resume`](./prompts/handoff-resume.md)   | Cross-conversation handoff · resume (calibrate + ask 3 key questions) | The handoff record from the previous step            | Recap confirmation + 3 key questions back        |
+| [`/debug-quiz`](./prompts/debug-quiz.md)           | No answer up front — get questioned back ([skill version](./debug-socratic/)) | Your code + "what's wrong here?"                     | 3-5 guiding questions, confirmed after you answer |
 
 ---
 
@@ -125,20 +143,6 @@ Not every handy prompt is worth packaging as a skill. The two solve different pr
 > "I **know when to use it** and want to feed it manually" → keep it a **Prompt**
 
 For things like knowledge capture or periodic review — where you already know when to use them and want to tweak params each time — a prompt template is actually smoother than a skill.
-
----
-
-## 📋 Prompt Templates
-
-Paste manually, no install required. Click a command to see the full template and usage.
-
-| Command                                            | Purpose                                                      | Input                                                | Output                                           |
-| -------------------------------------------------- | ------------------------------------------------------------ | ---------------------------------------------------- | ------------------------------------------------ |
-| [`/extract`](./prompts/extract.md)                 | Knowledge capture + meta-cognitive feedback on your questions | The current conversation                             | A note-ready capture doc                         |
-| [`/weekly-review`](./prompts/weekly-review.md)     | Cross-doc thinking-pattern insights                          | This week's N conversation-question docs             | Question habits / blind spots / training tips    |
-| [`/question-review`](./prompts/question-review.md) | Question-asking training (focused on raw questions only)     | Your raw questions across N conversations on a topic | The single deadliest blind spot + rewrite drills |
-| [`/handoff-export`](./prompts/handoff-export.md)   | Cross-conversation handoff · transcribe (lock in conclusions + open questions) | The current long conversation                        | A paste-ready handoff record                     |
-| [`/handoff-resume`](./prompts/handoff-resume.md)   | Cross-conversation handoff · resume (calibrate + ask 3 key questions) | The handoff record from the previous step            | Recap confirmation + 3 key questions back        |
 
 ---
 
@@ -223,12 +227,6 @@ A: This repo is fully free. Using skills doesn't incur extra cost — they consu
 ## 📜 License
 
 [MIT License](./LICENSE) — Feel free to use, modify, and share. Attribution appreciated.
-
----
-
-## 🌟 Star History
-
-If these skills help you, a Star would mean a lot ⭐
 
 ---
 
