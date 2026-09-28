@@ -101,6 +101,7 @@ my-agent-skills/
 | [`algo-deconstruct-engine`](./algo-deconstruct-engine/) | Deep algo deconstruction: blind-push gating + physical models + cold-start recall test | Deep mastery, long-term retention, building algo intuition   | ✅ v1.0 |
 | [`cook-from-zero`](./cook-from-zero/)                   | Learn a dish or technique from scratch: transferable principles + anti-procrastination layering | Home-cooking beginners who want the why, not just the recipe | 🚧 v0.1 |
 | [`debug-socratic`](./debug-socratic/)                   | Socratic debugging: 3-5 code-specific questions first, so you locate the bug yourself | Debugging practice problems or your own project              | 🧪 v0.1 |
+| [`complex-question-structuring`](./complex-question-structuring/) | For 5+ questions in one message, decide first: point-by-point, overall framework, or a mix | Long multi-question messages where sub-questions risk getting merged or skipped | ✅ v1.0 |
 
 > Status legend: ✅ stable ｜ 🚧 being refined ｜ 🧪 test build, not yet validated in real use
 
