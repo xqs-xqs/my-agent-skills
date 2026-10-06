@@ -74,7 +74,7 @@ my-agent-skills/
 │   ├── extract.md                # Single-conversation knowledge capture
 │   ├── weekly-review.md          # Cross-doc thinking-pattern insights
 │   ├── question-review.md        # Question-asking training
-│   ├── handoff-export.md         # Cross-conversation handoff · stage 1 (transcribe)
+│   ├── handoff-export.md         # Cross-conversation handoff · stage 1 (export)
 │   ├── handoff-resume.md         # Cross-conversation handoff · stage 2 (resume)
 │   └── debug-quiz.md             # Get questioned back, locate the bug yourself
 │
@@ -118,8 +118,8 @@ Paste manually, no install required. Click a command to see the full template an
 | [`/extract`](./prompts/extract.md)                 | Knowledge capture + meta-cognitive feedback on your questions | The current conversation                             | A note-ready capture doc                         |
 | [`/weekly-review`](./prompts/weekly-review.md)     | Cross-doc thinking-pattern insights                          | This week's N conversation-question docs             | Question habits / blind spots / training tips    |
 | [`/question-review`](./prompts/question-review.md) | Question-asking training (focused on raw questions only)     | Your raw questions across N conversations on a topic | The single deadliest blind spot + rewrite drills |
-| [`/handoff-export`](./prompts/handoff-export.md)   | Cross-conversation handoff · transcribe (lock in conclusions + open questions) | The current long conversation                        | A paste-ready handoff record                     |
-| [`/handoff-resume`](./prompts/handoff-resume.md)   | Cross-conversation handoff · resume (calibrate + ask 3 key questions) | The handoff record from the previous step            | Recap confirmation + 3 key questions back        |
+| [`/handoff-export`](./prompts/handoff-export.md)   | Cross-conversation handoff · export (conclusions with rationale by topic + corrections + open questions) | The current long conversation                        | A Markdown handoff record                        |
+| [`/handoff-resume`](./prompts/handoff-resume.md)   | Cross-conversation handoff · resume (verify the record, no re-distilling) | The handoff record from the previous step (optionally the original transcript) | Rules it will follow + unclear/conflicting/stale points; questions only if blocked |
 | [`/debug-quiz`](./prompts/debug-quiz.md)           | No answer up front — get questioned back ([skill version](./debug-socratic/)) | Your code + "what's wrong here?"                     | 3-5 guiding questions, confirmed after you answer |
 
 ---
