@@ -96,7 +96,7 @@ my-agent-skills/
 
 | Skill                                                   | Function                                                     | Use Case                                                     | Status |
 | ------------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------ |
-| [`doc-summary-zh`](./doc-summary-zh/)                   | Structured deep summary for technical & course documents     | Slides, technical docs, lectures                             | ✅ v1.1 |
+| [`doc-summary-zh`](./doc-summary-zh/)                   | Structured deep summary for technical & course documents     | Slides, technical docs, lectures                             | ✅ v1.2 |
 | [`algo-speed-run`](./algo-speed-run/)                   | One-shot algo breakdown: physical intuition + geek code + visualizer + cross-examination | Speed-run LeetCode, interview blitz, gap-filling             | ✅ v1.0 |
 | [`algo-deconstruct-engine`](./algo-deconstruct-engine/) | Deep algo deconstruction: blind-push gating + physical models + cold-start recall test | Deep mastery, long-term retention, building algo intuition   | ✅ v1.0 |
 | [`cook-from-zero`](./cook-from-zero/)                   | Learn a dish or technique from scratch: transferable principles + anti-procrastination layering | Home-cooking beginners who want the why, not just the recipe | 🚧 v0.1 |
