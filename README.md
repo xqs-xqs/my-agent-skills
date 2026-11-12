@@ -110,6 +110,9 @@ my-agent-skills/
 | [`cook-from-zero`](./cook-from-zero/)                   | 从零学一道菜/一种烹饪手法：通用原理+可迁移+防拖延分层 | 新手下厨、想搞懂原理而非照抄菜谱 | 🚧 v0.1 |
 | [`debug-socratic`](./debug-socratic/)                   | 苏格拉底式调试：先反问 3-5 个具体问题，逼你自己定位 bug | 刷题/写项目debug、想练定位能力     | 🧪 v0.1 |
 | [`complex-question-structuring`](./complex-question-structuring/) | 一次问 5 个以上问题时，先判断用逐条、整体框架还是混合结构回答 | 一条消息塞了很多问题、怕小问被合并漏答 | ✅ v1.0 |
+| [`prd-to-dev-path`](./prd-to-dev-path/) | 拿到 PRD 后拆开发路径：先列 Agent 替不了的事，再定里程碑顺序、技术选型和验收标准 | 准备让 Coding Agent 按需求文档开工、要定选型和里程碑 | ✅ v1.0 |
+| [`agent-workflow-setup`](./agent-workflow-setup/) | 搭 Coding Agent 协作流程：三份文档分工、PR 粒度、什么时候停下来问人 | 总在手动贴指令、点合并，想让 Agent 少打扰你 | ✅ v1.0 |
+| [`project-retro`](./project-retro/) | 从提交历史和文档提炼复盘：路径、改过的决定、下次默认做法、概念索引 | 项目或阶段做完后，想沉淀下次能直接套用的做法 | ✅ v1.0 |
 
 > 状态说明：✅ 已稳定使用 ｜ 🚧 打磨中 ｜ 🧪 测试版，尚未在真实场景验证
 
