@@ -102,6 +102,9 @@ my-agent-skills/
 | [`cook-from-zero`](./cook-from-zero/)                   | Learn a dish or technique from scratch: transferable principles + anti-procrastination layering | Home-cooking beginners who want the why, not just the recipe | 🚧 v0.1 |
 | [`debug-socratic`](./debug-socratic/)                   | Socratic debugging: 3-5 code-specific questions first, so you locate the bug yourself | Debugging practice problems or your own project              | 🧪 v0.1 |
 | [`complex-question-structuring`](./complex-question-structuring/) | For 5+ questions in one message, decide first: point-by-point, overall framework, or a mix | Long multi-question messages where sub-questions risk getting merged or skipped | ✅ v1.0 |
+| [`prd-to-dev-path`](./prd-to-dev-path/) | From a PRD to a dev path: list what the agent can't do first, then milestone order, tech choices and done-criteria | Handing a requirements doc to a coding agent and needing to settle tech choices and milestone order | 🧪 v0.1 |
+| [`agent-workflow-setup`](./agent-workflow-setup/) | Set up a coding-agent workflow: how to split the three docs, PR granularity, and when to stop and ask | You keep pasting instructions and clicking merge, and want the agent to interrupt you less | 🧪 v0.1 |
+| [`project-retro`](./project-retro/) | Retro from commit history and docs: path, revised decisions, next-time defaults, concept index | A project or phase just wrapped up and you want takeaways you can reuse next time | 🧪 v0.1 |
 
 > Status legend: ✅ stable ｜ 🚧 being refined ｜ 🧪 test build, not yet validated in real use
 
