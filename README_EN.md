@@ -58,36 +58,22 @@ Think of it as:
 
 ```
 my-agent-skills/
-├── README.md                     # Chinese homepage
-├── README.EN.md                  # English version (this file)
-├── LICENSE                       # Open source license
-│
-├── doc-summary-zh/               # Skill 1: Structured Chinese doc summarizer
-│   ├── SKILL.md                  # Core instruction file
-│   ├── doc-summary-zh.skill      # Packaged installer
-│   └── README.md                 # Skill-specific documentation
-│
-├── [skill-2]/                    # Future skills
-│   └── ...
-│
-├── prompts/                      # Prompt templates (paste manually, no install)
-│   ├── extract.md                # Single-conversation knowledge capture
-│   ├── weekly-review.md          # Cross-doc thinking-pattern insights
-│   ├── question-review.md        # Question-asking training
-│   ├── handoff-export.md         # Cross-conversation handoff · stage 1 (export)
-│   ├── handoff-resume.md         # Cross-conversation handoff · stage 2 (resume)
-│   └── debug-quiz.md             # Get questioned back, locate the bug yourself
-│
-└── docs/                         # General documentation
-    ├── how-to-install.md         # Installation guide
-    └── how-to-create.md          # Skill authoring guide
+├── README.md / README_EN.md     # Chinese / English homepage
+├── <skill-name>/                # One folder per skill
+│   ├── SKILL.md                 # Core instruction file (required)
+│   ├── <skill-name>.skill       # Packaged installer (required)
+│   ├── README.md                # Skill-specific documentation (optional)
+│   └── references/ assets/      # Reference files and templates read on demand (optional)
+└── prompts/                     # Prompt templates, one .md each, pasted manually
 ```
+
+For the actual skills and prompts, see the [Skill List](#-skill-list) and [Prompt Templates](#-prompt-templates) below.
 
 **Design Principles**
 
 - Each skill lives in its own folder; folder name matches the skill's `name` field
 - Each skill ships with both `SKILL.md` (readable/editable) and `.skill` (one-click install)
-- Each skill has its own README describing specific usage
+- Skills whose usage needs explaining have their own README; for those without one, the trigger scenarios are in the `description` of `SKILL.md`
 - Each prompt is a standalone `.md` file with its usage included inside
 
 ---
@@ -105,6 +91,7 @@ my-agent-skills/
 | [`prd-to-dev-path`](./prd-to-dev-path/) | From a PRD to a dev path: list what the agent can't do first, then milestone order, tech choices and done-criteria | Handing a requirements doc to a coding agent and needing to settle tech choices and milestone order | ✅ v1.0 |
 | [`agent-workflow-setup`](./agent-workflow-setup/) | Set up a coding-agent workflow: how to split the three docs, PR granularity, and when to stop and ask | You keep pasting instructions and clicking merge, and want the agent to interrupt you less | ✅ v1.0 |
 | [`project-retro`](./project-retro/) | Retro from commit history and docs: path, revised decisions, next-time defaults, concept index | A project or phase just wrapped up and you want takeaways you can reuse next time | ✅ v1.0 |
+| [`project-explainer`](./project-explainer/) | Project walkthrough for people new to a codebase: run it and verify facts first, then the main path, key designs and annotated real output; HTML page by default | Onboarding, handing over a project, explaining a repo to others | 🧪 v0.1 |
 
 > Status legend: ✅ stable ｜ 🚧 being refined ｜ 🧪 test build, not yet validated in real use
 
@@ -124,6 +111,7 @@ Paste manually, no install required. Click a command to see the full template an
 | [`/handoff-export`](./prompts/handoff-export.md)   | Cross-conversation handoff · export (conclusions with rationale by topic + corrections + open questions) | The current long conversation                        | A Markdown handoff record                        |
 | [`/handoff-resume`](./prompts/handoff-resume.md)   | Cross-conversation handoff · resume (verify the record, no re-distilling) | The handoff record from the previous step (optionally the original transcript) | Rules it will follow + unclear/conflicting/stale points; questions only if blocked |
 | [`/debug-quiz`](./prompts/debug-quiz.md)           | No answer up front — get questioned back ([skill version](./debug-socratic/)) | Your code + "what's wrong here?"                     | 3-5 guiding questions, confirmed after you answer |
+| [`/project-explainer`](./prompts/project-explainer.md) | Project walkthrough (condensed [skill version](./project-explainer/), no page template) | A codebase + who the reader is and what they should be able to do | A walkthrough meant to be read in order (HTML or Markdown) |
 
 ---
 
@@ -230,7 +218,7 @@ A: This repo is fully free. Using skills doesn't incur extra cost — they consu
 
 ## 📜 License
 
-[MIT License](./LICENSE) — Feel free to use, modify, and share. Attribution appreciated.
+Feel free to use, modify, and share. Please keep attribution.
 
 ---
 

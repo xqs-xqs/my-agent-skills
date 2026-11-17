@@ -55,48 +55,23 @@ Skill 是 Claude 的**可插拔能力包**。它本质上是一份结构化的 M
 
 ```
 my-agent-skills/
-├── README.md                     # 中文主页（本文件）
-├── README_EN.md                  # 英文版
-├── LICENSE                       # 开源协议
-│
-├── doc-summary-zh/               # Skill 1: 中文文档结构化总结
-│   ├── SKILL.md                  # 核心指令文件
-│   ├── doc-summary-zh.skill      # 打包安装文件
-│   └── README.md                 # 该 skill 的详细说明
-│
-├── cook-from-zero/               # Skill 2: 从零学做菜（原理驱动 + 防拖延分层）
-│   ├── SKILL.md                  # 核心指令文件
-│   ├── cook-from-zero.skill      # 打包安装文件
-│   ├── EVAL.md                   # 测试方法与评分卡
-│   └── README.md                 # 该 skill 的详细说明
-│
-├── debug-socratic/               # Skill 3: 苏格拉底式调试（先提问，不直接给答案）
-│   ├── SKILL.md                  # 核心指令文件
-│   ├── debug-socratic.skill      # 打包安装文件
-│   └── README.md                 # 该 skill 的详细说明
-│
-├── [skill]/                    # 后续添加的 skill
-│   └── ...
-│
-├── prompts/                      # Prompt 模板（手动粘贴使用，无需安装）
-│   ├── extract.md                # 单次对话知识沉淀
-│   ├── weekly-review.md          # 跨文档思维模式洞察
-│   ├── question-review.md        # 提问能力训练
-│   ├── handoff-export.md         # 跨对话交接·阶段一（导出）
-│   ├── handoff-resume.md         # 跨对话交接·阶段二（接续）
-│   └── debug-quiz.md             # 贴代码先被反问，自己定位 bug
-│
-└── docs/                         # 通用文档
-    ├── how-to-install.md         # 安装教程
-    └── how-to-create.md          # 如何创建自己的 skill
+├── README.md / README_EN.md     # 中英文主页
+├── <skill-name>/                # 每个 skill 一个文件夹
+│   ├── SKILL.md                 # 核心指令文件（必有）
+│   ├── <skill-name>.skill       # 打包安装文件（必有）
+│   ├── README.md                # 该 skill 的详细说明（可选）
+│   └── references/ assets/      # 按需读取的参考文件和模板（可选）
+└── prompts/                     # Prompt 模板，每个一个 .md，手动粘贴使用
 ```
+
+具体有哪些 skill 和 prompt，见下方的 [Skill 列表](#-skill-列表) 和 [Prompt 模板](#-prompt-模板)。
 
 **设计原则**
 
 - 每个 skill 独立一个文件夹，文件夹名 = skill 的 `name` 字段
 - 每个 skill 同时提供 `SKILL.md`（可读可编辑）和 `.skill`（一键安装）
-- 各 skill 有自己的 README，说明独特用法
-- 每个 prompt 也是独立一个文件夹，具体用法一并包含在 `.md` 文件中
+- 用法需要额外说明的 skill 带自己的 README；没有 README 的，触发场景写在 `SKILL.md` 的 `description` 里
+- 每个 prompt 是一个独立的 `.md` 文件，具体用法一并写在文件里
 
 ---
 
@@ -113,6 +88,7 @@ my-agent-skills/
 | [`prd-to-dev-path`](./prd-to-dev-path/) | 拿到 PRD 后拆开发路径：先列 Agent 替不了的事，再定里程碑顺序、技术选型和验收标准 | 准备让 Coding Agent 按需求文档开工、要定选型和里程碑 | ✅ v1.0 |
 | [`agent-workflow-setup`](./agent-workflow-setup/) | 搭 Coding Agent 协作流程：三份文档分工、PR 粒度、什么时候停下来问人 | 总在手动贴指令、点合并，想让 Agent 少打扰你 | ✅ v1.0 |
 | [`project-retro`](./project-retro/) | 从提交历史和文档提炼复盘：路径、改过的决定、下次默认做法、概念索引 | 项目或阶段做完后，想沉淀下次能直接套用的做法 | ✅ v1.0 |
+| [`project-explainer`](./project-explainer/) | 给没参与过的人写项目导读：先跑通、核对事实，再讲主干、关键设计和逐行注释的真实输出，默认出 HTML 页面 | 新人上手、交接项目、向别人讲清一个仓库 | 🧪 v0.1 |
 
 > 状态说明：✅ 已稳定使用 ｜ 🚧 打磨中 ｜ 🧪 测试版，尚未在真实场景验证
 
@@ -132,6 +108,7 @@ my-agent-skills/
 | [`/handoff-export`](./prompts/handoff-export.md) | 跨对话交接·导出（按主题固化结论与依据 + 纠正记录 + 待决问题） | 当前长对话 | Markdown 交接记录 |
 | [`/handoff-resume`](./prompts/handoff-resume.md) | 跨对话交接·接续（核对记录，不再提炼） | 上一步的交接记录（可附原对话文件） | 将遵守的互动规则 + 记录疑点；仅有阻塞项时提问 |
 | [`/debug-quiz`](./prompts/debug-quiz.md) | 别直接给答案，先反问（[skill 版](./debug-socratic/)） | 你的代码 + "哪里错了" | 3-5 个引导性问题，你答完再确认补充 |
+| [`/project-explainer`](./prompts/project-explainer.md) | 项目导读（[skill 版](./project-explainer/)的压缩版，不含页面模板） | 一个代码仓库 + 读者是谁、读完要做到什么 | 一份按顺序读的导读（HTML 或 Markdown） |
 
 ---
 

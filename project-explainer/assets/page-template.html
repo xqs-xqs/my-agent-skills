@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>项目名 导读</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* 版式：左侧固定目录，右侧一栏正文。
+   语义色 k1..k3 只表示一个维度（例如“哪个角色在行动”），ok / bad 表示通过与失败。
+   换项目时改 :root 里的变量值即可，深色模式的两段要同步改。 */
+:root {
+  --bg: #f5f6f9; --surface: #ffffff; --ink: #171c26; --muted: #596273; --line: #dde1e9;
+  --accent: #3546b8;
+  --k1: #6a45c9; --k2: #1565c0; --k3: #a85a00; --ok: #0b7a5c; --bad: #b3261e;
+  --k1-bg: #f0ebfb; --k2-bg: #e7f0fb; --k3-bg: #fbf0df; --ok-bg: #e2f4ee; --bad-bg: #fbe9e7;
+  --sans: "IBM Plex Sans", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #12151b; --surface: #1a1e27; --ink: #e7eaf0; --muted: #9ba4b4; --line: #2c323e;
+    --accent: #9eabff;
+    --k1: #b9a2ff; --k2: #7db6ff; --k3: #f0b25c; --ok: #5fd0ad; --bad: #ff8a80;
+    --k1-bg: #272040; --k2-bg: #162a45; --k3-bg: #3a2a10; --ok-bg: #10322a; --bad-bg: #3d1a17;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #12151b; --surface: #1a1e27; --ink: #e7eaf0; --muted: #9ba4b4; --line: #2c323e;
+  --accent: #9eabff;
+  --k1: #b9a2ff; --k2: #7db6ff; --k3: #f0b25c; --ok: #5fd0ad; --bad: #ff8a80;
+  --k1-bg: #272040; --k2-bg: #162a45; --k3-bg: #3a2a10; --ok-bg: #10322a; --bad-bg: #3d1a17;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.75; }
+.page { max-width: 1120px; margin: 0 auto; padding-block: 28px 80px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 48px; }
+nav.toc { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 20px); align-self: start; font-size: 14px; }
+nav.toc .brand { font-family: var(--mono); font-weight: 500; font-size: 13px; color: var(--muted); letter-spacing: .04em; margin-bottom: 14px; }
+nav.toc ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; counter-reset: ch; }
+nav.toc li { counter-increment: ch; }
+nav.toc a { display: flex; gap: 10px; padding: 5px 8px; border-radius: 6px; color: var(--ink); text-decoration: none; }
+nav.toc a::before { content: counter(ch); font-family: var(--mono); font-size: 12px; color: var(--muted); width: 1.4em; padding-top: 2px; }
+nav.toc a:hover { background: var(--surface); }
+a { color: var(--accent); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+main { min-width: 0; display: flex; flex-direction: column; gap: 64px; }
+header.top h1 { font-size: clamp(30px, 5vw, 42px); line-height: 1.2; margin: 0 0 14px; font-weight: 600; text-wrap: balance; }
+header.top p { margin: 0; max-width: 40em; color: var(--muted); font-size: 17px; }
+header.top .facts { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-top: 22px; font-family: var(--mono); font-size: 13px; color: var(--muted); }
+section { display: flex; flex-direction: column; gap: 18px; scroll-margin-top: 20px; }
+section > * { margin: 0; }
+h2 { font-size: 25px; line-height: 1.3; font-weight: 600; text-wrap: balance; display: flex; gap: 12px; align-items: baseline; }
+h2 .n { font-family: var(--mono); font-size: 14px; font-weight: 500; color: var(--accent); flex: none; }
+h3 { font-size: 18px; font-weight: 600; margin-top: 10px; }
+p, li { max-width: 42em; }
+ul, ol { padding-left: 1.3em; display: flex; flex-direction: column; gap: 6px; }
+code { font-family: var(--mono); font-size: .88em; background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: .05em .35em; overflow-wrap: anywhere; }
+pre { margin: 0; font-family: var(--mono); font-size: 13.5px; line-height: 1.65; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; overflow-x: auto; }
+pre code { background: none; border: 0; padding: 0; font-size: inherit; overflow-wrap: normal; }
+.lead { font-size: 17px; }
+.note { border-left: 3px solid var(--accent); padding: 2px 0 2px 16px; color: var(--muted); max-width: 42em; }
+.note strong { color: var(--ink); }
+.warn { border-left-color: var(--k3); }
+/* concept cards */
+.concepts { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+.concept { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 16px 18px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.concept dt { font-weight: 600; }
+.concept dt span { font-family: var(--mono); font-weight: 400; font-size: 13px; color: var(--muted); margin-left: 6px; }
+.concept dd { margin: 0; font-size: 15px; line-height: 1.65; }
+.concept dd.like { color: var(--muted); }
+/* figures */
+figure { margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.scroll { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 14px; }
+svg.dia { display: block; width: 100%; min-width: 620px; height: auto; color: var(--ink); font-family: var(--sans); }
+svg.dia text { fill: currentColor; font-size: 13px; }
+svg.dia .sm { font-size: 11.5px; fill: var(--muted); }
+svg.dia .b { font-weight: 600; }
+svg.dia .box { fill: var(--bg); stroke: currentColor; stroke-width: 1.2; }
+svg.dia .ln { stroke: currentColor; stroke-width: 1.2; fill: none; }
+svg.dia .k1 { stroke: var(--k1); fill: var(--k1-bg); } svg.dia .t-k1 { fill: var(--k1); }
+svg.dia .k2 { stroke: var(--k2); fill: var(--k2-bg); } svg.dia .t-k2 { fill: var(--k2); }
+svg.dia .k3 { stroke: var(--k3); fill: var(--k3-bg); } svg.dia .t-k3 { fill: var(--k3); }
+svg.dia .ok { stroke: var(--ok); fill: var(--ok-bg); } svg.dia .t-ok { fill: var(--ok); }
+svg.dia .bad { stroke: var(--bad); fill: var(--bad-bg); } svg.dia .t-bad { fill: var(--bad); }
+svg.dia .l-ok { stroke: var(--ok); } svg.dia .l-bad { stroke: var(--bad); }
+svg.dia .mk-ok { fill: var(--ok); } svg.dia .mk-bad { fill: var(--bad); }
+figcaption { font-size: 14px; color: var(--muted); max-width: 46em; }
+/* role chips */
+.role { font-family: var(--mono); font-size: .86em; border-radius: 4px; padding: .08em .45em; white-space: nowrap; }
+.role.k1 { color: var(--k1); background: var(--k1-bg); } .role.k2 { color: var(--k2); background: var(--k2-bg); }
+.role.k3 { color: var(--k3); background: var(--k3-bg); } .role.ok { color: var(--ok); background: var(--ok-bg); }
+.role.k0 { color: var(--ink); background: var(--surface); border: 1px solid var(--line); }
+/* trace */
+.filters { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 14px; }
+.filters button { font: inherit; font-family: var(--mono); font-size: 13px; padding: 4px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; }
+.filters button[aria-pressed="true"] { border-color: var(--ink); background: var(--ink); color: var(--bg); }
+.trace { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 8px 0; display: flex; flex-direction: column; }
+.trace .row { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 4px 20px; padding: 5px 16px; border-left: 3px solid transparent; }
+.trace .row code { background: none; border: 0; padding: 0; font-size: 12.5px; line-height: 1.6; white-space: pre-wrap; overflow-wrap: anywhere; }
+.trace .row .why { font-size: 13.5px; line-height: 1.55; color: var(--muted); }
+.trace .row.k1 { border-left-color: var(--k1); } .trace .row.k1 code { color: var(--k1); }
+.trace .row.k2 { border-left-color: var(--k2); } .trace .row.k2 code { color: var(--k2); }
+.trace .row.k3 { border-left-color: var(--k3); } .trace .row.k3 code { color: var(--k3); }
+.trace .row.ok { border-left-color: var(--ok); } .trace .row.ok code { color: var(--ok); }
+.trace .row.dim { opacity: .28; }
+/* pipeline steps */
+.steps { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; counter-reset: st; max-width: none; }
+.steps li { counter-increment: st; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; font-size: 14.5px; line-height: 1.55; max-width: none; min-width: 0; }
+.steps li::before { content: counter(st); font-family: var(--mono); font-size: 12px; color: var(--accent); display: block; }
+.steps li b { display: block; }
+.steps li span { color: var(--muted); }
+/* tables */
+.tw { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; min-width: 560px; font-size: 14.5px; line-height: 1.55; }
+th, td { text-align: left; padding: 9px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+tr:last-child td { border-bottom: 0; }
+th { font-weight: 600; font-size: 13px; color: var(--muted); white-space: nowrap; }
+td code { white-space: nowrap; }
+td.p { color: var(--ok); font-weight: 500; white-space: nowrap; } td.f { color: var(--bad); white-space: nowrap; }
+tr.sum td { font-weight: 600; font-variant-numeric: tabular-nums; }
+/* context split */
+.ctx { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+.ctx > div { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.ctx h4 { margin: 0 0 4px; font-size: 14px; font-weight: 600; }
+.ctx .m { font-family: var(--mono); font-size: 12.5px; padding: 5px 9px; border-radius: 4px; border: 1px solid var(--line); }
+.ctx .m.old { color: var(--muted); border-style: dashed; }
+.ctx .m.keep { border-color: var(--ok); color: var(--ok); background: var(--ok-bg); }
+dl.gloss { display: grid; grid-template-columns: minmax(120px, 190px) minmax(0, 1fr); gap: 10px 20px; margin: 0; font-size: 15px; line-height: 1.6; }
+dl.gloss dt { font-family: var(--mono); font-size: 13.5px; }
+dl.gloss dd { margin: 0; color: var(--muted); }
+@media (max-width: 860px) {
+  .page { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  nav.toc { position: static; }
+  nav.toc ol { flex-direction: row; flex-wrap: wrap; gap: 4px 6px; }
+  nav.toc a { background: var(--surface); border: 1px solid var(--line); padding: 3px 10px; }
+  nav.toc a::before { width: auto; }
+  .trace .row { grid-template-columns: minmax(0, 1fr); }
+  dl.gloss { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  dl.gloss dd { margin-bottom: 10px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+<nav class="toc" aria-label="章节">
+  <div class="brand">项目名 / 导读</div>
+  <ol>
+    <li><a href="#what">这是什么</a></li>
+    <li><a href="#basics">基础概念</a></li>
+    <li><a href="#spine">主干</a></li>
+    <li><a href="#design">关键设计</a></li>
+    <li><a href="#run">读懂一次运行</a></li>
+    <li><a href="#map">代码地图</a></li>
+    <li><a href="#limits">结果与局限</a></li>
+    <li><a href="#try">自己跑一次</a></li>
+    <li><a href="#gloss">术语表</a></li>
+  </ol>
+</nav>
+
+<main>
+<header class="top">
+  <h1>项目名 导读</h1>
+  <p>一句话：写给谁，读完能做到什么。</p>
+  <div class="facts"><span>语言与版本</span><span>代码规模</span><span>主要依赖</span></div>
+</header>
+
+<section id="what">
+  <h2><span class="n">01</span>这是什么</h2>
+  <p class="lead">一段话说清项目做什么。用读者已经熟悉的东西作对照。</p>
+  <p>它和读者熟悉的同类东西有什么不同，用一两点说明。</p>
+  <p class="note"><strong>先澄清一点：</strong>在这里纠正新人最可能带着的误解。</p>
+</section>
+
+<section id="basics">
+  <h2><span class="n">02</span>基础概念</h2>
+  <p>后文建立在这几个词上。每个词一句定义，一个类比。</p>
+  <dl class="concepts">
+    <div class="concept"><dt>术语<span>English term</span></dt><dd>一句定义：它是什么，能做什么，不能做什么。</dd><dd class="like">类比：挂到读者已有的经验上，一句为止。</dd></div>
+    <div class="concept"><dt>术语<span>English term</span></dt><dd>一句定义。</dd><dd class="like">类比：一句。</dd></div>
+    <div class="concept"><dt>术语<span>English term</span></dt><dd>一句定义。</dd><dd class="like">类比：一句。</dd></div>
+  </dl>
+</section>
+
+<section id="spine">
+  <h2><span class="n">03</span>主干</h2>
+  <p>一次运行从头到尾经过的路径。写明代码在哪个文件、哪个函数。</p>
+  <figure>
+    <div class="scroll">
+    <svg class="dia" viewBox="0 0 720 150" role="img" aria-label="与图下说明一致的一句话">
+      <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker>
+        <marker id="arrow-ok" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="mk-ok" d="M0 0L10 5L0 10z"/></marker>
+      </defs>
+      <rect class="box" x="16" y="40" width="150" height="60" rx="6"/><text class="b" x="91" y="66" text-anchor="middle">输入</text><text class="sm" x="91" y="85" text-anchor="middle">它是什么</text>
+      <rect class="box k1" x="286" y="40" width="150" height="60" rx="6"/><text class="b t-k1" x="361" y="66" text-anchor="middle">处理者</text><text class="sm" x="361" y="85" text-anchor="middle">它做什么</text>
+      <rect class="box ok" x="554" y="40" width="150" height="60" rx="6"/><text class="b t-ok" x="629" y="66" text-anchor="middle">结果</text><text class="sm" x="629" y="85" text-anchor="middle">谁来确认</text>
+      <line class="ln" x1="166" y1="70" x2="282" y2="70" marker-end="url(#arrow)"/><text class="sm" x="224" y="60" text-anchor="middle">传的是什么</text>
+      <line class="ln l-ok" x1="436" y1="70" x2="550" y2="70" marker-end="url(#arrow-ok)"/><text class="sm t-ok" x="493" y="60" text-anchor="middle">满足什么条件</text>
+    </svg>
+    </div>
+    <figcaption>这张图要让读者看到什么。解释性的句子写在这里，不写进图里。</figcaption>
+  </figure>
+  <ol class="steps">
+    <li><b>第一步</b><span>半句说明</span></li>
+    <li><b>第二步</b><span>半句说明</span></li>
+    <li><b>第三步</b><span>半句说明</span></li>
+  </ol>
+</section>
+
+<section id="design">
+  <h2><span class="n">04</span>关键设计</h2>
+  <p class="lead">它是什么，为什么这样做，代价是什么。</p>
+  <ul>
+    <li><span class="role k1">角色一</span> 负责什么。</li>
+    <li><span class="role k2">角色二</span> 负责什么。</li>
+    <li><span class="role k3">角色三</span> 负责什么。</li>
+  </ul>
+  <h3>哪些是系统保证的，哪些只是约定</h3>
+  <div class="tw"><table>
+    <thead><tr><th>规则</th><th>怎么强制</th><th>代码位置</th></tr></thead>
+    <tbody>
+      <tr><td>一条规则</td><td>由什么机制保证</td><td><code>path/to/file</code></td></tr>
+      <tr><td>另一条规则</td><td>只写在文档或提示词里，系统不拦</td><td><code>path/to/file</code></td></tr>
+    </tbody>
+  </table></div>
+  <div class="ctx">
+    <div><h4>完整内容</h4><div class="m keep">保留的一项</div><div class="m old">被省略的一项</div><div class="m keep">保留的一项</div></div>
+    <div><h4>实际看到的</h4><div class="m keep">保留的一项</div><div class="m old">一句摘要</div><div class="m keep">保留的一项</div></div>
+  </div>
+</section>
+
+<section id="run">
+  <h2><span class="n">05</span>读懂一次运行</h2>
+  <p>下面是一次真实运行的输出（节选）。点击按钮只看某个角色的行。</p>
+  <p class="note warn"><strong>关于这段输出：</strong>写明它的来历。用了替身数据时，说清哪些是程序真实产生的、哪些是预先写好的。</p>
+  <div class="filters" role="group" aria-label="按角色筛选">
+    <button type="button" id="f-all" data-f="all" aria-pressed="true">全部</button>
+    <button type="button" id="f-k0" data-f="k0" aria-pressed="false">主流程</button>
+    <button type="button" id="f-k1" data-f="k1" aria-pressed="false">角色一</button>
+    <button type="button" id="f-k2" data-f="k2" aria-pressed="false">角色二</button>
+    <button type="button" id="f-ok" data-f="ok" aria-pressed="false">检查</button>
+  </div>
+  <div class="trace" id="trace-rows"></div>
+</section>
+
+<section id="map">
+  <h2><span class="n">06</span>代码地图</h2>
+  <p>按阅读顺序排列，前几行读完就理解了主干。</p>
+  <div class="tw"><table>
+    <thead><tr><th>目录 / 文件</th><th>负责什么</th><th>对应本页</th></tr></thead>
+    <tbody>
+      <tr><td><code>path/to/core</code></td><td>主干在这里</td><td>第 3 节</td></tr>
+      <tr><td><code>path/to/other</code></td><td>支撑性模块</td><td>第 4 节</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="limits">
+  <h2><span class="n">07</span>结果与局限</h2>
+  <p>实测效果。数据能说明什么，不能说明什么。</p>
+  <div class="tw"><table>
+    <thead><tr><th>项目</th><th>方案甲</th><th>方案乙</th></tr></thead>
+    <tbody>
+      <tr><td>一项测试</td><td class="p">通过</td><td class="f">未通过</td></tr>
+      <tr class="sum"><td>合计</td><td>1 / 1</td><td>0 / 1</td></tr>
+    </tbody>
+  </table></div>
+  <ul>
+    <li><strong>一条局限。</strong>具体说明。</li>
+  </ul>
+</section>
+
+<section id="try">
+  <h2><span class="n">08</span>自己跑一次</h2>
+  <p>只写实际执行过的命令。</p>
+<pre><code># 一步一行，带一句注释
+command --flag value</code></pre>
+</section>
+
+<section id="gloss">
+  <h2><span class="n">09</span>术语表</h2>
+  <dl class="gloss">
+    <dt>term</dt><dd>一行解释。</dd>
+    <dt>term</dt><dd>一行解释。</dd>
+  </dl>
+</section>
+</main>
+</div>
+
+<script>
+(function () {
+  // 每行：[语义类, 输出原文, 说明]。语义类与样式里的 k0..k3 / ok / bad 对应。
+  var rows = [
+    ["k0", "[step 1] 主流程的一行输出", "这一行是谁产生的，意味着什么。"],
+    ["k1", "  [角色一] 它内部的一行输出", "缩进表示这是子流程里的动作。"],
+    ["ok", "[check] passed", "检查通过。"]
+  ];
+  var box = document.getElementById("trace-rows");
+  rows.forEach(function (r) {
+    var row = document.createElement("div");
+    row.className = "row " + r[0];
+    row.dataset.a = r[0];
+    var c = document.createElement("code"); c.textContent = r[1];
+    var w = document.createElement("div"); w.className = "why"; w.textContent = r[2];
+    row.appendChild(c); row.appendChild(w); box.appendChild(row);
+  });
+  var buttons = document.querySelectorAll(".filters button");
+  buttons.forEach(function (b) {
+    b.addEventListener("click", function () {
+      var f = b.dataset.f;
+      buttons.forEach(function (o) { o.setAttribute("aria-pressed", o === b ? "true" : "false"); });
+      box.querySelectorAll(".row").forEach(function (row) {
+        row.classList.toggle("dim", f !== "all" && row.dataset.a !== f);
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>
