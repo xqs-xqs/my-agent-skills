@@ -58,36 +58,22 @@ Think of it as:
 
 ```
 my-agent-skills/
-├── README.md                     # Chinese homepage
-├── README.EN.md                  # English version (this file)
-├── LICENSE                       # Open source license
-│
-├── doc-summary-zh/               # Skill 1: Structured Chinese doc summarizer
-│   ├── SKILL.md                  # Core instruction file
-│   ├── doc-summary-zh.skill      # Packaged installer
-│   └── README.md                 # Skill-specific documentation
-│
-├── [skill-2]/                    # Future skills
-│   └── ...
-│
-├── prompts/                      # Prompt templates (paste manually, no install)
-│   ├── extract.md                # Single-conversation knowledge capture
-│   ├── weekly-review.md          # Cross-doc thinking-pattern insights
-│   ├── question-review.md        # Question-asking training
-│   ├── handoff-export.md         # Cross-conversation handoff · stage 1 (export)
-│   ├── handoff-resume.md         # Cross-conversation handoff · stage 2 (resume)
-│   └── debug-quiz.md             # Get questioned back, locate the bug yourself
-│
-└── docs/                         # General documentation
-    ├── how-to-install.md         # Installation guide
-    └── how-to-create.md          # Skill authoring guide
+├── README.md / README_EN.md     # Chinese / English homepage
+├── <skill-name>/                # One folder per skill
+│   ├── SKILL.md                 # Core instruction file (required)
+│   ├── <skill-name>.skill       # Packaged installer (required)
+│   ├── README.md                # Skill-specific documentation (optional)
+│   └── references/ assets/      # Reference files and templates read on demand (optional)
+└── prompts/                     # Prompt templates, one .md each, pasted manually
 ```
+
+For the actual skills and prompts, see the [Skill List](#-skill-list) and [Prompt Templates](#-prompt-templates) below.
 
 **Design Principles**
 
 - Each skill lives in its own folder; folder name matches the skill's `name` field
 - Each skill ships with both `SKILL.md` (readable/editable) and `.skill` (one-click install)
-- Each skill has its own README describing specific usage
+- Skills whose usage needs explaining have their own README; for those without one, the trigger scenarios are in the `description` of `SKILL.md`
 - Each prompt is a standalone `.md` file with its usage included inside
 
 ---
