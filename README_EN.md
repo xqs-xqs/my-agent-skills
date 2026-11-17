@@ -218,7 +218,7 @@ A: This repo is fully free. Using skills doesn't incur extra cost — they consu
 
 ## 📜 License
 
-[MIT License](./LICENSE) — Feel free to use, modify, and share. Attribution appreciated.
+Feel free to use, modify, and share. Please keep attribution.
 
 ---
 
