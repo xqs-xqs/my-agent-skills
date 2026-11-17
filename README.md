@@ -113,6 +113,7 @@ my-agent-skills/
 | [`prd-to-dev-path`](./prd-to-dev-path/) | 拿到 PRD 后拆开发路径：先列 Agent 替不了的事，再定里程碑顺序、技术选型和验收标准 | 准备让 Coding Agent 按需求文档开工、要定选型和里程碑 | ✅ v1.0 |
 | [`agent-workflow-setup`](./agent-workflow-setup/) | 搭 Coding Agent 协作流程：三份文档分工、PR 粒度、什么时候停下来问人 | 总在手动贴指令、点合并，想让 Agent 少打扰你 | ✅ v1.0 |
 | [`project-retro`](./project-retro/) | 从提交历史和文档提炼复盘：路径、改过的决定、下次默认做法、概念索引 | 项目或阶段做完后，想沉淀下次能直接套用的做法 | ✅ v1.0 |
+| [`project-explainer`](./project-explainer/) | 给没参与过的人写项目导读：先跑通、核对事实，再讲主干、关键设计和逐行注释的真实输出，默认出 HTML 页面 | 新人上手、交接项目、向别人讲清一个仓库 | 🧪 v0.1 |
 
 > 状态说明：✅ 已稳定使用 ｜ 🚧 打磨中 ｜ 🧪 测试版，尚未在真实场景验证
 
@@ -132,6 +133,7 @@ my-agent-skills/
 | [`/handoff-export`](./prompts/handoff-export.md) | 跨对话交接·导出（按主题固化结论与依据 + 纠正记录 + 待决问题） | 当前长对话 | Markdown 交接记录 |
 | [`/handoff-resume`](./prompts/handoff-resume.md) | 跨对话交接·接续（核对记录，不再提炼） | 上一步的交接记录（可附原对话文件） | 将遵守的互动规则 + 记录疑点；仅有阻塞项时提问 |
 | [`/debug-quiz`](./prompts/debug-quiz.md) | 别直接给答案，先反问（[skill 版](./debug-socratic/)） | 你的代码 + "哪里错了" | 3-5 个引导性问题，你答完再确认补充 |
+| [`/project-explainer`](./prompts/project-explainer.md) | 项目导读（[skill 版](./project-explainer/)的压缩版，不含页面模板） | 一个代码仓库 + 读者是谁、读完要做到什么 | 一份按顺序读的导读（HTML 或 Markdown） |
 
 ---
 

@@ -105,6 +105,7 @@ my-agent-skills/
 | [`prd-to-dev-path`](./prd-to-dev-path/) | From a PRD to a dev path: list what the agent can't do first, then milestone order, tech choices and done-criteria | Handing a requirements doc to a coding agent and needing to settle tech choices and milestone order | ✅ v1.0 |
 | [`agent-workflow-setup`](./agent-workflow-setup/) | Set up a coding-agent workflow: how to split the three docs, PR granularity, and when to stop and ask | You keep pasting instructions and clicking merge, and want the agent to interrupt you less | ✅ v1.0 |
 | [`project-retro`](./project-retro/) | Retro from commit history and docs: path, revised decisions, next-time defaults, concept index | A project or phase just wrapped up and you want takeaways you can reuse next time | ✅ v1.0 |
+| [`project-explainer`](./project-explainer/) | Project walkthrough for people new to a codebase: run it and verify facts first, then the main path, key designs and annotated real output; HTML page by default | Onboarding, handing over a project, explaining a repo to others | 🧪 v0.1 |
 
 > Status legend: ✅ stable ｜ 🚧 being refined ｜ 🧪 test build, not yet validated in real use
 
@@ -124,6 +125,7 @@ Paste manually, no install required. Click a command to see the full template an
 | [`/handoff-export`](./prompts/handoff-export.md)   | Cross-conversation handoff · export (conclusions with rationale by topic + corrections + open questions) | The current long conversation                        | A Markdown handoff record                        |
 | [`/handoff-resume`](./prompts/handoff-resume.md)   | Cross-conversation handoff · resume (verify the record, no re-distilling) | The handoff record from the previous step (optionally the original transcript) | Rules it will follow + unclear/conflicting/stale points; questions only if blocked |
 | [`/debug-quiz`](./prompts/debug-quiz.md)           | No answer up front — get questioned back ([skill version](./debug-socratic/)) | Your code + "what's wrong here?"                     | 3-5 guiding questions, confirmed after you answer |
+| [`/project-explainer`](./prompts/project-explainer.md) | Project walkthrough (condensed [skill version](./project-explainer/), no page template) | A codebase + who the reader is and what they should be able to do | A walkthrough meant to be read in order (HTML or Markdown) |
 
 ---
 
